@@ -358,15 +358,15 @@ public class CourseUnitNavigationActivityTest extends CourseBaseActivityTest {
     @Test
     public void orientationChangeTest() {
         CourseUnitNavigationActivity activity =
-                Robolectric.buildActivity(getActivityClass(), getIntent()).setup().get();
-        // Orientation needs to be explicitly set as PORTRAIT since its UNDEFINED initially
-        testOrientationChange(activity, Configuration.ORIENTATION_PORTRAIT);
-        assertEquals(Configuration.ORIENTATION_PORTRAIT,
+                Robolectric.buildActivity(getActivityClass(), getIntent()).create().get();
+        // Orientation is initially PORTRAIT so we should test the LANDSCAPE orientation first
+        testOrientationChange(activity, Configuration.ORIENTATION_LANDSCAPE);
+        assertEquals(Configuration.ORIENTATION_LANDSCAPE,
                 activity.getResources().getConfiguration().orientation);
         assertOrientationSetup(activity);
 
-        testOrientationChange(activity, Configuration.ORIENTATION_LANDSCAPE);
-        assertEquals(Configuration.ORIENTATION_LANDSCAPE,
+        testOrientationChange(activity, Configuration.ORIENTATION_PORTRAIT);
+        assertEquals(Configuration.ORIENTATION_PORTRAIT,
                 activity.getResources().getConfiguration().orientation);
         assertOrientationSetup(activity);
     }
