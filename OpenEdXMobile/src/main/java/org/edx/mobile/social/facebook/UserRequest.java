@@ -11,7 +11,7 @@ public class UserRequest {
 
     public static void makeUserRequest(GraphRequest.Callback callback) {
         final Bundle params = new Bundle();
-        params.putString("fields", "picture,name,id,email,permissions");
+        params.putString("fields", "name,id,email");
         final GraphRequest request = new GraphRequest(
                 AccessToken.getCurrentAccessToken(),
                 ME_ENDPOINT,

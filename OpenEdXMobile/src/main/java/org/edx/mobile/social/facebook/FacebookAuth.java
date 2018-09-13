@@ -11,10 +11,10 @@ import com.facebook.login.LoginResult;
 
 import org.edx.mobile.social.ISocialImpl;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 public class FacebookAuth extends ISocialImpl {
-    final CallbackManager callbackManager;
+    private final CallbackManager callbackManager;
 
     public FacebookAuth(Activity activity) {
         super(activity);
@@ -43,7 +43,7 @@ public class FacebookAuth extends ISocialImpl {
 
     @Override
     public void login() {
-        LoginManager.getInstance().logInWithReadPermissions(activity, Arrays.asList("email"));
+        LoginManager.getInstance().logInWithReadPermissions(activity, Collections.singletonList("email"));
     }
 
     @Override

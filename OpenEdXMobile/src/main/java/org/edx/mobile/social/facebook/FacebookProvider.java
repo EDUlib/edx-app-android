@@ -1,6 +1,7 @@
 package org.edx.mobile.social.facebook;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.facebook.AccessToken;
 import com.google.inject.Singleton;
@@ -64,9 +65,9 @@ public class FacebookProvider implements SocialProvider {
             return;
         }
 
-        final GetUserCallback.IGetUserResponse getUserResponse = new GetUserCallback.IGetUserResponse() {
+        final GetUserCallback.GetUserResponse getUserResponse = new GetUserCallback.GetUserResponse() {
             @Override
-            public void onCompleted(SocialMember socialMember) {
+            public void onCompleted(@NonNull SocialMember socialMember) {
                 callback.onSuccess(socialMember);
             }
         };

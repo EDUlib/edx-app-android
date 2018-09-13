@@ -339,7 +339,7 @@ android {
         def fbLoginProtocolScheme = ""
         def facebook = config.get('FACEBOOK')
         if (facebook?.get('ENABLED')) {
-            facebookAppId = facebook?.get('FACEBOOK_APP_ID')
+            facebookAppId = facebook.get('FACEBOOK_APP_ID')
             if (null == facebookAppId) {
                 throw new GradleException("You must set FACEBOOK_APP_ID if FACEBOOK is enabled")
             }

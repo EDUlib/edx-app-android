@@ -1,41 +1,42 @@
 package org.edx.mobile.social.facebook;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 
+import org.edx.mobile.logger.Logger;
 import org.edx.mobile.social.SocialMember;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class GetUserCallback {
-    public interface IGetUserResponse {
-        void onCompleted(@Nullable SocialMember socialMember);
+    protected final Logger logger = new Logger(getClass().getName());
+
+    public interface GetUserResponse {
+        void onCompleted(@NonNull SocialMember socialMember);
     }
 
-    private IGetUserResponse getUserResponse;
+    private GetUserResponse getUserResponse;
     private GraphRequest.Callback callback;
 
-    public GetUserCallback(final IGetUserResponse getUserResponse) {
+    public GetUserCallback(final GetUserResponse getUserResponse) {
         this.getUserResponse = getUserResponse;
         callback = new GraphRequest.Callback() {
             @Override
             public void onCompleted(GraphResponse response) {
-                SocialMember socialMember = null;
+                SocialMember socialMember;
                 try {
                     JSONObject userObj = response.getJSONObject();
                     if (userObj == null) {
+                        logger.warn("Unable to get user json object from facebook graph api.");
                         return;
                     }
                     socialMember = jsonToUser(userObj);
-
-                } catch (JSONException e) {
-                    // Handle exception ...
+                } catch (Exception e) {
+                    logger.warn("Some exception occurred in fetching user data from facebook graph api.");
+                    return;
                 }
-
-                // Handled by ProfileActivity
                 GetUserCallback.this.getUserResponse.onCompleted(socialMember);
             }
         };
