@@ -37,6 +37,7 @@ import org.edx.mobile.module.prefs.PrefManager;
 import org.edx.mobile.module.storage.IStorage;
 import org.edx.mobile.receivers.NetworkConnectivityReceiver;
 import org.edx.mobile.util.Config;
+import org.edx.mobile.util.NetworkUtil;
 import org.edx.mobile.util.NotificationUtil;
 
 import java.io.InputStream;
@@ -160,7 +161,8 @@ public abstract class MainApplication extends MultiDexApplication {
         }
 
         // Initialize Facebook SDK
-        if (config.getFacebookConfig().isEnabled()) {
+        boolean isOnZeroRatedNetwork = NetworkUtil.isOnZeroRatedNetwork(getApplicationContext(), config);
+        if (!isOnZeroRatedNetwork && config.getFacebookConfig().isEnabled()) {
             // Facebook sdk should be initialized through AndroidManifest meta data declaration but
             // we are generating the meta data through gradle script due to which it is necessary
             // to manually initialize the sdk here.
