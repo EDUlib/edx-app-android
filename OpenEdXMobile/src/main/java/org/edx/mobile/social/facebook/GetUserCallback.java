@@ -33,8 +33,8 @@ public class GetUserCallback {
                         return;
                     }
                     socialMember = jsonToUser(userObj);
-                } catch (Exception e) {
-                    logger.warn("Some exception occurred in fetching user data from facebook graph api.");
+                } catch (JSONException e) {
+                    logger.error(e);
                     return;
                 }
                 GetUserCallback.this.getUserResponse.onCompleted(socialMember);

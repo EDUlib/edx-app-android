@@ -36,7 +36,7 @@ public class FacebookAuth extends ISocialImpl {
 
                     @Override
                     public void onError(FacebookException error) {
-                        logger.debug("Facebook Log in got error.");
+                        logger.error(error);
                     }
                 });
     }
