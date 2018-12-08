@@ -63,3 +63,8 @@ gradle.properties
 
 # reports directory
 /artifacts
+
+#Edulib local config
+edulib_config/config.yaml
+edulib_config/edx.properties
+edulib_config/local.yaml
