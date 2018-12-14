@@ -1,0 +1,14 @@
+[
+ {
+ "version": "2.16",
+ "messages": [
+              {
+              "title": "Programmes sur mobile",
+              "message": "Vous pouvez maintenant visualiser vos programmes EDUlib en déplacement!"
+              },
+              {
+              "message": "Améliorations générales et bogues résolus."
+              }
+              ]
+ }
+ ]

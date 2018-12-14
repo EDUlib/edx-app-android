@@ -1,0 +1,59 @@
+{
+    "fields":[
+    {
+              "name" : "confidentialité du compte",
+              "label" : "Les autres apprenants peuvent voir mes :",
+              "type" : "commutateur",
+              "data_type" : "booléen",
+              "options" : {
+                "values" : [
+                            { "name" : "Profil complet", "value" : "tous les utilisateurs" },
+                            { "name" : "Profil limité",  "value" : "privé" }
+                 ]
+              },
+              "instructions" : "Un profil limité ne partage que votre nom d'utilisateur et votre photo de profil.",
+              "accessibility_hint" : "Changez les informations partagées avec les autres."
+    },
+    {
+              "name" : "année_de_naissance",
+              "label" : "Année de naissance",
+              "type" : "sélectionner",
+              "options" : {
+                "range_min" : 1896,
+                "range_max" : 2015,
+                "allows_none" : true,
+                "none_label" : "Pas d'année de naissance"
+              },
+              "instructions" : "Vous devez spécifier votre année de naissance avant de pouvoir partager votre profil complet.",
+              "sub_instructions" : "Cela ne sera pas affiché publiquement"
+    },
+    {
+              "name" : "pays",
+              "label" : "Emplacement",
+              "type" : "sélectionner",
+              "data_type" : "pays",
+              "options" : {
+                "reference" : "pays",
+                "allows_none" : true,
+                "none_label" : "Aucun emplacement"
+              }
+    },
+    {
+              "name" : "compétences_linguistiques",
+              "label" : "Langue principale",
+              "type" : "sélectionner",
+              "data_type" : "langue",
+              "options" : {
+                "reference" : "langues",
+                "allows_none" : true,
+                "none_label" : "Aucune langue principale"
+              }
+    },
+    {
+              "name" : "bio",
+              "label" : "À propos de moi",
+              "type" : "zone de texte",
+              "placeholder" : "Je voudrais apprendre..."
+    }
+    ]
+}
