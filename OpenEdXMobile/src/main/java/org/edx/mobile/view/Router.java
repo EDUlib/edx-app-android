@@ -444,6 +444,11 @@ public class Router {
         context.startActivity(PaymentsInfoActivity.Companion.newIntent(context, courseDate, courseUpgrade));
     }
 
+    public void showPaymentsInfoActivity(@NonNull Context context, @NonNull EnrolledCoursesResponse courseDate,
+                                         @NonNull CourseUpgradeResponse courseUpgrade) {
+        context.startActivity(PaymentsInfoActivity.Companion.newIntent(context, courseDate, courseUpgrade));
+    }
+
     public void showSubjectsActivityForResult(@NonNull Fragment fragment, int requestCode) {
         fragment.startActivityForResult(ViewSubjectsActivity.newIntent(fragment.getActivity()), requestCode);
     }
